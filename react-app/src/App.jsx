@@ -1,3 +1,5 @@
+import "./styles/App.css"
+
 function GreetByName(props) {
   const { name = 'Guest' } = props
 

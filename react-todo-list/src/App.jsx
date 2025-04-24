@@ -1,14 +1,11 @@
-function ListeElement({element = ""}) {
-  return <li>{element}</li>
-}
-
-function Liste({elementer = []}) {
-
-}
+import Liste from './components/Liste.jsx'
 
 function App() {
+  const innhold = ["ting", "andre ting", "oppvask", "mate katten"] // Dummy array with todo list items
   return (
-    <h1>Hello world</h1>
+    <div>
+      <Liste elementer={innhold}/>
+    </div>
   )
 }
 

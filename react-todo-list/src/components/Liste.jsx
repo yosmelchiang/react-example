@@ -1,4 +1,5 @@
 import './Liste.css'
+
 // Creates a <li> element for the string that is passed to this component
 function ListeElement({element = ""}) {
   return <li>{element}</li>

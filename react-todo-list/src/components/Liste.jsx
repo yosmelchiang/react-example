@@ -8,7 +8,7 @@ function ListeElement({ onClickHandler, element = ""}) { // Receives a function 
     onClickHandler();
   }
   
-  return <li onClick={handleClick}>{element}</li> 
+  return <li onClick={handleClick}>{element + '❌'}</li> 
 } 
 
 // Processes an array of strings and returns an unordered list with multiple list items for each array string

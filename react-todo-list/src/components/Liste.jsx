@@ -1,7 +1,7 @@
 import './Liste.css'
 
 // Creates a <li> element for the string that is passed to this component
-function ListeElement({ onClickHandler, element = ""}) { // Receives a function that returns the function that removes an item based on index with the index bound to it
+function ListeElement({ onClickHandler, element = ""}) { // Receives a function (with an index remembered via closure) that removes an item when called.
   
   // Function that we will be calling when a li item is clicked on
   function handleClick() {

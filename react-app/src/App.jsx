@@ -2,26 +2,20 @@ import { useState, useEffect } from "react";
 import "./styles/App.css";
 
 function App() {
-  const [myArr, setMyArr] = useState([1, 2, 3, 4, 5]);
-  const [isEmptyArr, setisEmptyArr] = useState(false) // Storing the state of our array to check wether its empty or not
+  const [input, setInput] = useState('')
 
-  const removeFirstNum = () => {
-    const newArr = [...myArr];
-    newArr.splice(0, 1);
-    setMyArr(newArr);
-  } 
-
-  useEffect(() => {
-    if(myArr.length === 0) { // This will only trigger if myArr.length is 0, meaning its empty
-      setisEmptyArr(true)
-    }
-  }, [myArr]) // We want useEffect to run only when changes to myArr has been made, that way we can check its length everytime its modified
+  const updateInput = event => {
+    setInput(event.target.value);
+  }
 
   return (
     <div>
-      <h1>{isEmptyArr ? 'Array is empty':'Array is not empty'}</h1> {/* Shows a text representing the true / falsy value of isEmptyArr */}
-      <h1>{myArr}</h1>
-      <button onClick={removeFirstNum}>Remove first num state</button>
+      {
+        input ? <h1>Hi there {input}</h1> : <h1></h1>
+      }
+      <label htmlFor="name">Name</label>
+      <input id="name" onChange={updateInput}></input>
+      <button onClick={() => alert(`Welcome to my website ${input}`)}>Click me</button>
     </div>
   )
 }

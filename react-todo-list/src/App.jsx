@@ -25,10 +25,15 @@ function App() {
   return (
     <div className="listContainer">
       {
-        listElements.length ? <h1>{motivationText}</h1> : <h1>No more work for today 🎉</h1>
+        listElements.length ? 
+        <>
+        <h1>{motivationText}</h1> 
+        <Liste elementer={listElements} handleElementClick={removeItem}/>
+        </>
+        : 
+        <h1>No more work for today 🎉</h1>
       }
 
-      <Liste elementer={listElements} handleElementClick={removeItem}/>
     </div>
   )
 }

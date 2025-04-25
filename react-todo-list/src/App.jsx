@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 
 function App() {
   
-  const [listElements, setList] = useState(["ting", "andre ting", "oppvask", "mate katten"])
-
-  const [motivationText, setMotivationText] = useState('')
+  const [listElements, setList] = useState(["ting", "andre ting", "oppvask", "mate katten"]);
+  const [motivationText, setMotivationText] = useState('');
+  const [input, setInput] = useState('');
   
   function removeItem(index) {
     const updatedList = [...listElements] // Create a shallow copy of the original array
@@ -22,17 +22,33 @@ function App() {
     setMotivationText(motivationText)
   }, [listElements])
 
+
+  const saveInput = event => {
+    setInput(event.target.value)
+  }
+
+  const addTodo = () => {
+    const listElementsCopy = [...listElements]
+    listElementsCopy.unshift(input)
+    setList(listElementsCopy)
+    setInput('')
+  }
+
   return (
     <div className="listContainer">
+      <div className="itemList">
       {
         listElements.length ? 
         <>
         <h1>{motivationText}</h1> 
+        <input onChange={saveInput} value={input}></input>
+        <button onClick={addTodo}>Add todo</button>
         <Liste elementer={listElements} handleElementClick={removeItem}/>
         </>
         : 
         <h1>No more work for today 🎉</h1>
       }
+      </div>
 
     </div>
   )

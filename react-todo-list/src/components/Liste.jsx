@@ -6,17 +6,17 @@ function ListeElement({ onClickHandler, element = '' }) {
   // Receives a function (with an index remembered via closure) that removes an item when called.
 
   return (
-    <li>
+    <div className="listItem">
       {element}
       <img src={ok} onClick={() => onClickHandler()} />
-    </li>
+    </div>
   );
 }
 
 // Processes an array of strings and returns an unordered list with multiple list items for each array string
 function Liste({ handleElementClick, elementer = [] }) {
   return (
-    <ul>
+    <>
       {elementer.map((e, i) => (
         <ListeElement // Iterates through the array and generates a <li> item
           key={i} // We have to give this component a key, its for react stuff
@@ -29,7 +29,7 @@ function Liste({ handleElementClick, elementer = [] }) {
           }}
         />
       ))}
-    </ul>
+    </>
   );
 }
 

@@ -3,16 +3,11 @@ import './Liste.css'
 // Creates a <li> element for the string that is passed to this component
 function ListeElement({ onClickHandler, element = ""}) { // Receives a function (with an index remembered via closure) that removes an item when called.
   
-  // Function that we will be calling when a li item is clicked on
-  function handleClick() {
-    onClickHandler();
-  }
-  
-  return <li onClick={handleClick}>{element + '❌'}</li> 
+  return <li onClick={() => onClickHandler()}>{element + '❌'}</li> 
 } 
 
 // Processes an array of strings and returns an unordered list with multiple list items for each array string
-function Liste({ handleElementClickAtIndex, elementer = []}) {
+function Liste({ handleElementClick, elementer = []}) {
   return (
     <ul>
       {
@@ -20,9 +15,10 @@ function Liste({ handleElementClickAtIndex, elementer = []}) {
           key={i} // We have to give this component a key, its for react stuff
           element={e} // Passing each item of our listElements array to generate a <li> item out of it
           
-          // Closure occurs here: We are creating an anonymous function that will call handleElementClickAtIndex() once invoked, 
-          // and we are also passing the index value i to it, it will remember i even though we have closed this lexical environment
-          onClickHandler={ function() { handleElementClickAtIndex(i)} }
+          // Callback + Closure in action
+          // Callback: We are passing an anonymous function as a callback to the ListeElement component. This function will be called later when a user clicks a list item.
+          // Closure: The callback function remembers variables from its outer scope, in this example its i which is the index
+          onClickHandler={ () => { handleElementClick(i)} }
         />) 
       }
     </ul>
